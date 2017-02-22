@@ -11,6 +11,7 @@ spring:
       password:
     jpa:
       database: H2
+      show-sql: true
       hibernate:
         ddl-auto: create-drop
 ---
@@ -22,3 +23,11 @@ spring:
       database: POSTGRESQL
       hibernate:
         ddl-auto: create-drop
+        
+---
+mybatis:
+    mapper-locations: classpath*:META-INF/mybatis/mapper/*.xml
+    configuration:
+        map-underscore-to-camel-case: true
+        default-fetch-size: 100
+        default-statement-timeout: 30
