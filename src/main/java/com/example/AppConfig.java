@@ -28,17 +28,21 @@ public class AppConfig {
         String username;
         String password;
 
-        String databaseUrl = System.getenv("DATABASE_URL");
-        if (databaseUrl != null) {
-            URI dbUri = new URI(databaseUrl);
-            url = "jdbc:postgresql://" + dbUri.getHost() + ":" + dbUri.getPort() + dbUri.getPath();
-            username = dbUri.getUserInfo().split(":")[0];
-            password = dbUri.getUserInfo().split(":")[1];
-        } else {
-            url = this.properties.getUrl();
-            username = this.properties.getUsername();
-            password = this.properties.getPassword();
-        }
+//        String databaseUrl = System.getenv("DATABASE_URL");
+//        if (databaseUrl != null) {
+//            URI dbUri = new URI(databaseUrl);
+//            url = "jdbc:postgresql://" + dbUri.getHost() + ":" + dbUri.getPort() + dbUri.getPath();
+//            username = dbUri.getUserInfo().split(":")[0];
+//            password = dbUri.getUserInfo().split(":")[1];
+//        } else {
+//            url = this.properties.getUrl();
+//            username = this.properties.getUsername();
+//            password = this.properties.getPassword();
+//        }
+
+		url = this.properties.getUrl();
+		username = this.properties.getUsername();
+		password = this.properties.getPassword();
 
         DataSourceBuilder factory = DataSourceBuilder
                 .create(this.properties.getClassLoader())
